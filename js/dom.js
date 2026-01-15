@@ -77,7 +77,7 @@ export class DomManipulator {
             <figure>
                 <img src = '${src}' alt = '${alt_text}' loading = 'lazy'/>
                 <figcaption>${caption}</figcaption>
-                <input type='checkbox' name='key' value=${image_index}>   
+                <input type='checkbox' name='key' value=${image_index} style = 'display: none'>   
             <figure>
         `
         )('Figure')
@@ -157,10 +157,12 @@ export class Iteractions{
         }) 
 
         let pressTimer = null
+        let hold = false
         elem.addEventListener('pointerdown', (e)  => {
             e.preventDefault()
             pressTimer = setTimeout(() => {
                 elem.querySelector('input').click()
+                hold = true
             }, 200)
         })
         const cancelPress = () => {
@@ -172,6 +174,10 @@ export class Iteractions{
 
         elem.addEventListener('click', 
             (event) =>{
+                if (hold) {
+                    hold = false
+                    return
+                }
                 let element = event.target.closest('figure')
                 const imgToShow = element.querySelector('img')
                 const figCaption = element.querySelector('figcaption').textContent
