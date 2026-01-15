@@ -188,13 +188,11 @@ export class Iteractions{
                 })
                 let x = 0
                 let y = 0
-                document.addEventListener('pointerdown', (e) => {
-                    e.preventDefault()
+                banner.addEventListener('pointerdown', (e) => {
                     x = e.clientX
                     y = e.clientY
                 })
-                document.addEventListener('pointerup', (e) => {
-                    e.preventDefault()
+                banner.addEventListener('pointerup', (e) => {
                     let diffX = e.clientX - x
                     let diffY =Math.abs( e.clientY - y)
                     if(diffX > 30 && diffY < 50){

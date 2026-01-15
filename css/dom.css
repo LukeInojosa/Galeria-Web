@@ -93,7 +93,6 @@ body{
 
 
 [data-element-name = "Galeria"] {
-    touch-action: none;
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(250px,.5fr));
     height: auto;
