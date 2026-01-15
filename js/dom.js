@@ -189,16 +189,18 @@ export class Iteractions{
                 let x = 0
                 let y = 0
                 document.addEventListener('pointerdown', (e) => {
+                    e.preventDefault()
                     x = e.x
                     y = e.y
                 })
                 document.addEventListener('pointerup', (e) => {
+                    e.preventDefault()
                     let diffX = e.x - x
                     let diffY =Math.abs( e.y - y)
-                    if(diffX > 80 && diffY < 50){
+                    if(diffX > 30 && diffY < 50){
                         arrowLeft()
                     }
-                    if(diffX < -80 && diffY < 50){
+                    if(diffX < -30 && diffY < 50){
                         arrowRigth()
                     }
                 })
