@@ -49,8 +49,8 @@ export class DomManipulator {
         `
             <div id='main'>
                 <header>
-                ${this.Button('delete', 'delete')}
                 <input type='checkbox' id='select-all'>
+                ${this.Button('delete', 'delete')}
                 </header>
                 ${this.Galeria()}
                 <footer>
@@ -144,43 +144,65 @@ export class Iteractions{
                     )
                 )
 
+                function arrowRigth(){
+                    const image = banner.querySelector(dataNameIs('Image'))
+                    const nextImage = document.querySelector(dataNameIs('Galeria'))
+                                                .querySelector(`[src='${image.querySelector('img').src}']`)
+                                                ?.parentElement
+                                                ?.nextElementSibling
+                                                ?.querySelector('img')
+                    if (nextImage){
+                        image.remove()
+                        banner.appendChild(
+                            DomManipulator.createElement(
+                                DomManipulator.Image(nextImage.src, nextImage.alt)
+                            )
+                        )
+                    }
+                }
+
+                function arrowLeft(){
+                    const image = banner.querySelector(dataNameIs('Image'))
+                    const nextImage = document.querySelector(dataNameIs('Galeria'))
+                                                .querySelector(`[src='${image.querySelector('img').src}']`)
+                                                ?.parentElement
+                                                ?.previousElementSibling
+                                                ?.querySelector('img')
+                    if(nextImage){
+                        image.remove()
+                        banner.appendChild(
+                            DomManipulator.createElement(
+                                DomManipulator.Image(nextImage.src, nextImage.alt)
+                            )
+                        )
+                    }
+                }
                 document.addEventListener('keydown', (e) => {
                     if(e.key == 'ArrowRight'){
-                        console.log('here')
-                        const image = banner.querySelector(dataNameIs('Image'))
-                        const nextImage = document.querySelector(dataNameIs('Galeria'))
-                                                  .querySelector(`[src='${image.querySelector('img').src}']`)
-                                                  ?.parentElement
-                                                  ?.nextElementSibling
-                                                  ?.querySelector('img')
-                        if (nextImage){
-                            image.remove()
-                            banner.appendChild(
-                                DomManipulator.createElement(
-                                    DomManipulator.Image(nextImage.src, nextImage.alt)
-                                )
-                            )
-                        }
+                        arrowRigth()
                     }else if(e.key == 'ArrowLeft'){
-                        const image = banner.querySelector(dataNameIs('Image'))
-                        const nextImage = document.querySelector(dataNameIs('Galeria'))
-                                                  .querySelector(`[src='${image.querySelector('img').src}']`)
-                                                  ?.parentElement
-                                                  ?.previousElementSibling
-                                                  ?.querySelector('img')
-                        if(nextImage){
-                            image.remove()
-                            banner.appendChild(
-                                DomManipulator.createElement(
-                                    DomManipulator.Image(nextImage.src, nextImage.alt)
-                                )
-                            )
-                        }
+                        arrowLeft()
                     }else if (e.key == 'Escape'){
                         banner.click()
                     }
                 })
-                
+                let x = 0
+                let y = 0
+                document.addEventListener('pointerdown', (e) => {
+                    x = e.x
+                    y = e.y
+                })
+                document.addEventListener('pointerup', (e) => {
+                    let diffX = e.x - x
+                    let diffY =Math.abs( e.y - y)
+                    if(diffX > 80 && diffY < 50){
+                        arrowLeft()
+                    }
+                    if(diffX < -80 && diffY < 50){
+                        arrowRigth()
+                    }
+                })
+
                 document.body.appendChild(banner)
             }
         )

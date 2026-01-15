@@ -93,7 +93,7 @@ body{
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(250px,.5fr));
     height: auto;
-    gap: 12px;
+    gap: 4px;
     margin: 1vw;
 }
 
@@ -101,4 +101,29 @@ body{
     [data-element-name = "Galeria"] {
         grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
     }
+}
+
+header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color:  rgb(109, 109, 196);
+}
+header > input {
+    align-self: flex-start;
+}
+[data-element-name = "Button"].delete{
+    padding: 5px;
+    background-color: red;
+    border: 0;
+    border-radius: 10px;
+    transition: 0.05s;
+}
+
+[data-element-name = "Button"].delete:active{ 
+    background-color: rgb(252, 106, 106);
 }
