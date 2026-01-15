@@ -7,7 +7,7 @@ export const dataNameIs = (atributo) => {
 export const classIs = (classe) => `.${classe}`
 
 export class DomManipulator {
-
+    
     static createTag(element){
         return (name) => {
             let wrapper = document.createElement('div')
@@ -17,6 +17,16 @@ export class DomManipulator {
         }
     }
     
+    static Colors(){
+        return this.createTag(
+        `
+        <div>
+            <input type="color" class="back" value='white'>
+            <input type="color" clas="bar" value='black'>
+        </div>
+        `
+        )('Colors')
+    }
     static Form(){
        return this.createTag(
         `
@@ -50,6 +60,7 @@ export class DomManipulator {
             <div id='main'>
                 <header>
                 <input type='checkbox' id='select-all'>
+                ${this.Colors()}
                 ${this.Button('delete', 'delete')}
                 </header>
                 ${this.Galeria()}
@@ -111,13 +122,25 @@ export class Iteractions{
         'Banner': (element) => {this.Banner(element)},
         'Button': (element) => {this.Button(element)},
         'Main': (element) => {this.Main(element)},
+        'Colors': (element) => {this.Colors(element)},
     }
+
+
 
     static register(elementType, element){
         const fn = this.iteraction[elementType]
         if (fn) fn(element)
     }
 
+    static Colors(elem) {
+        console.log(elem)
+        elem.firstElementChild.addEventListener('change',(e) => {
+            document.documentElement.style.setProperty('--background-color',e.currentTarget.value)
+        } )
+        elem.lastElementChild.addEventListener('change',(e) => {
+            document.documentElement.style.setProperty('--front-color',e.currentTarget.value)
+        } )
+    }
     static Figure(elem) {
         elem.querySelector('input').addEventListener('click', e => {e.stopPropagation()})
         elem.querySelector('input').addEventListener('change', (e) => {

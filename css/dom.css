@@ -1,9 +1,21 @@
+:root{
+    --background-color: white;
+    --front-color:rgb(109, 109, 196);
+}
+
+[data-element-name= "Colors"] input{
+    padding: 0;
+    margin: 0;
+    border: 0;
+} 
+
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 body{
+    background-color: var(--background-color);
     width: 100vw;
 }
 
@@ -11,7 +23,7 @@ body{
     aspect-ratio: 1/1;
     position: relative;
     margin: 0;
-    background: white;
+    background: var(--background-color);
     transition: 300ms;
 }
 
@@ -68,13 +80,13 @@ body{
     width: fit-content;
     height: fit-content;
     padding: 30px;
-    background-color: rgb(109, 109, 196);
+    background-color: var(--front-color);
     border: 0;
     border-radius: 70% 10% 10% 20%;
 
     font-size: x-large;
     font-weight: bolder;
-    color: white;
+    color: var(--background-color);
 
     position: fixed;
     bottom: 1vh;
@@ -86,7 +98,7 @@ body{
 
 [data-element-name = "Button"].insert:hover{
     cursor: pointer;
-    background: rgb(93, 93, 255);
+    background: var(--front-color);
     box-shadow: 0.5px 0.5px 5px black;
     font-size: xx-large;
 }
@@ -114,7 +126,7 @@ header{
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    background-color:  rgb(109, 109, 196);
+    background-color:  var(--front-color);
 }
 header > input {
     align-self: flex-start;
