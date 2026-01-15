@@ -66,7 +66,7 @@ export class DomManipulator {
             <figure>
                 <img src = '${src}' alt = '${alt_text}' loading = 'lazy'/>
                 <figcaption>${caption}</figcaption>
-                <input type='checkbox' name='key' value=${image_index} style = 'display:none'>   
+                <input type='checkbox' name='key' value=${image_index}>   
             <figure>
         `
         )('Figure')
@@ -184,18 +184,18 @@ export class Iteractions{
                 document.body.appendChild(banner)
             }
         )
-        elem.addEventListener('mouseover',
-            (event) => {
-                const element = event.target.closest('figure')
-                element.querySelector('input').style.display = ''
-            }
-        )
-        elem.addEventListener('mouseout',
-            (event) =>{
-                const element = event.target.closest('figure')
-                element.querySelector('input').style.display = 'none'
-            }
-        )
+        // elem.addEventListener('mouseover',
+        //     (event) => {
+        //         const element = event.target.closest('figure')
+        //         element.querySelector('input').style.display = ''
+        //     }
+        // )
+        // elem.addEventListener('mouseout',
+        //     (event) =>{
+        //         const element = event.target.closest('figure')
+        //         element.querySelector('input').style.display = 'none'
+        //     }
+        // )
     }
 
     static Banner(elem) {
