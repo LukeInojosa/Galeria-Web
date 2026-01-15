@@ -238,12 +238,15 @@ export class Iteractions{
                 })
                 banner.addEventListener('pointerup', (e) => {
                     let diffX = e.clientX - x
-                    let diffY =Math.abs( e.clientY - y)
-                    if(diffX > 30 && diffY < 50){
+                    let diffY = e.clientY - y
+                    if(diffX > 30 && Math.abs(diffY) < 50){
                         arrowLeft()
                     }
-                    if(diffX < -30 && diffY < 50){
+                    if(diffX < -30 && Math.abs(diffY) < 50){
                         arrowRigth()
+                    }
+                    if(Math.abs(diffX) < 50 && diffY < -30) {
+                        banner.click()
                     }
                 })
 
