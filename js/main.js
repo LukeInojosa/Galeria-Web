@@ -42,10 +42,12 @@ let deleteList = []
 document.addEventListener('delete',
     (event) => {
         if (event.detail.checked){
+            event.detail.element.querySelector('img').style.filter = 'opacity(0.5)'
             const key = event.detail.key
             const element = event.detail.element
             deleteList.push({key,element})
         } else {
+            event.detail.element.querySelector('img').style.filter = 'opacity(1)'
             deleteList = deleteList.filter((reg) => reg.key != event.detail.key)
         }
         console.log(deleteList)

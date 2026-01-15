@@ -155,6 +155,21 @@ export class Iteractions{
             })
             document.dispatchEvent(markedFigure)
         }) 
+
+        let pressTimer = null
+        elem.addEventListener('pointerdown', (e)  => {
+            e.preventDefault()
+            pressTimer = setTimeout(() => {
+                elem.querySelector('input').click()
+            }, 200)
+        })
+        const cancelPress = () => {
+            clearTimeout(pressTimer)
+        }
+        elem.addEventListener('pointerup', cancelPress)
+        elem.addEventListener('pointerleave', cancelPress)
+        elem.addEventListener('pointercancel', cancelPress)
+
         elem.addEventListener('click', 
             (event) =>{
                 let element = event.target.closest('figure')
