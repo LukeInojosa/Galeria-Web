@@ -21,8 +21,11 @@ export class DomManipulator {
         return this.createTag(
         `
         <div>
-            <input type="color" class="back" value='white'>
+            <button>change color</button>
+            <div>
+            <input type="color" class="back" value='red'>
             <input type="color" clas="bar" value='black'>
+            </div>
         </div>
         `
         )('Colors')
@@ -140,6 +143,13 @@ export class Iteractions{
         elem.lastElementChild.addEventListener('change',(e) => {
             document.documentElement.style.setProperty('--front-color',e.currentTarget.value)
         } )
+        elem.querySelector('button').addEventListener('click', (e) => {
+            const div = elem.querySelector('div')
+            if(div.style.display =='none')
+                div.style.display = 'block'
+            else
+                div.style.display = 'none'
+        })
     }
     static Figure(elem) {
         elem.querySelector('input').addEventListener('click', e => {e.stopPropagation()})

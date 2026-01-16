@@ -2,13 +2,22 @@
     --background-color: white;
     --front-color:rgb(109, 109, 196);
 }
-
+[data-element-name= "Colors"] div{
+    position: absolute;
+    display: none;
+}
 [data-element-name= "Colors"] input{
-    padding: 0;
-    margin: 0;
+    display: block;
     border: 0;
     
 } 
+[data-element-name= "Colors"] button{
+    cursor: pointer;
+    background-color: white;
+    border: 0;
+    padding: 10px;
+    border-radius: 10px;
+}
 
 *{
     box-sizing: border-box;
@@ -122,7 +131,7 @@ body{
 header{
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
