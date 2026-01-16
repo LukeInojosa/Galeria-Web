@@ -24,7 +24,7 @@ export class DomManipulator {
             <button>change color</button>
             <div>
             <input type="color" class="back" value='red'>
-            <input type="color" clas="bar" value='black'>
+            <input type="color" class="bar" value='black'>
             </div>
         </div>
         `
@@ -137,10 +137,10 @@ export class Iteractions{
 
     static Colors(elem) {
         console.log(elem)
-        elem.firstElementChild.addEventListener('change',(e) => {
+        elem.querySelector('.back').addEventListener('change',(e) => {
             document.documentElement.style.setProperty('--background-color',e.currentTarget.value)
         } )
-        elem.lastElementChild.addEventListener('change',(e) => {
+        elem.querySelector('.bar').addEventListener('change',(e) => {
             document.documentElement.style.setProperty('--front-color',e.currentTarget.value)
         } )
         elem.querySelector('button').addEventListener('click', (e) => {
