@@ -2,6 +2,29 @@
     --background-color: white;
     --front-color:rgb(109, 109, 196);
 }
+[data-element-name= "Form"] input{
+    display: none;
+}
+[data-element-name= "Form"] label{
+    display: block;
+    background-color: var(--front-color);
+    padding: 10px;
+    border-radius: 5%;
+    transition: 0.5s;
+}
+
+[data-element-name= "Form"] label:hover{
+    filter:brightness(1.5);
+}
+[data-element-name= "Form"] {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+
 [data-element-name= "Colors"] div{
     position: absolute;
     display: none;
@@ -111,6 +134,7 @@ body{
     background: var(--front-color);
     box-shadow: 0.5px 0.5px 5px black;
     font-size: xx-large;
+    filter:brightness(1.5);
 }
 
 
