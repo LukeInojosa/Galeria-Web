@@ -7,9 +7,11 @@ document.body.appendChild(
     )
 )
 
+// Inicializa o banco de dados IndexedDB
 const db = new DataBase('base',1)
-const imageTableExist = await db.create('images')
+await db.create('images')
 
+// Carrega e exibe todas as imagens do banco de dados
 async function refreshGalery(){
     const galery = document.querySelector(dataNameIs('Galeria'))
     const images = await db.getAll('images')
@@ -23,6 +25,7 @@ async function refreshGalery(){
 }
 refreshGalery()
 
+// Evento para inserir novas imagens no banco e exibir na galeria
 document.addEventListener('insert',
     async (event) => {
         const files = event.detail.files
@@ -38,6 +41,7 @@ document.addEventListener('insert',
     }   
 )
 
+// Gerencia seleção de imagens para deleção
 let deleteList = []
 document.addEventListener('delete',
     (event) => {
@@ -54,6 +58,7 @@ document.addEventListener('delete',
     }   
 )
 
+// Remove todas as imagens selecionadas do banco e da galeria
 document.addEventListener('deleteAll',
     async () => {
         const toDeleteNow = deleteList
@@ -70,6 +75,7 @@ document.addEventListener('deleteAll',
     }
 )
 
+// Seleciona ou deseleciona todos os checkboxes
 document.addEventListener('selectAll', (event) =>{
     document.querySelectorAll(`input[type='checkbox']`).forEach(e => {
         if(event.detail.select){
@@ -79,5 +85,3 @@ document.addEventListener('selectAll', (event) =>{
         }
     })    
 })
-
-

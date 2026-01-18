@@ -8,6 +8,7 @@ export const classIs = (classe) => `.${classe}`
 
 export class DomManipulator {
     
+    // Factory para criar tags HTML com identificador único
     static createTag(element){
         return (name) => {
             let wrapper = document.createElement('div')
@@ -57,6 +58,7 @@ export class DomManipulator {
         )('Galeria')
     }
 
+    // Estrutura principal da aplicação
     static Main(){
         return this.createTag(
         `
@@ -107,6 +109,7 @@ export class DomManipulator {
         )('Image')
     }
 
+    // Cria elemento HTML e registra suas interações
     static createElement(elementDescriptor) {
         let wrapper = document.createElement('div')
         wrapper.innerHTML = elementDescriptor
@@ -120,6 +123,7 @@ export class DomManipulator {
 
 export class Iteractions{
     
+    // Mapa de interações associadas aos tipos de elementos
     static iteraction = {
         'Figure': (element) => {this.Figure(element)},
         'Banner': (element) => {this.Banner(element)},
@@ -128,13 +132,13 @@ export class Iteractions{
         'Colors': (element) => {this.Colors(element)},
     }
 
-
-
+    // Executa interação apropriada baseada no tipo de elemento
     static register(elementType, element){
         const fn = this.iteraction[elementType]
         if (fn) fn(element)
     }
 
+    // Gerencia mudança de cores do tema
     static Colors(elem) {
         console.log(elem)
         elem.querySelector('.back').addEventListener('change',(e) => {
@@ -151,6 +155,8 @@ export class Iteractions{
                 div.style.display = 'none'
         })
     }
+
+    // Gerencia interações com figuras (seleção, visualização em fullscreen, navegação)
     static Figure(elem) {
         elem.querySelector('input').addEventListener('click', e => {e.stopPropagation()})
         elem.querySelector('input').addEventListener('change', (e) => {
@@ -166,6 +172,7 @@ export class Iteractions{
             document.dispatchEvent(markedFigure)
         }) 
 
+        // Detecta long-press para seleção
         let pressTimer = null
         let hold = false
         elem.addEventListener('pointerdown', (e)  => {
@@ -182,6 +189,7 @@ export class Iteractions{
         elem.addEventListener('pointerleave', cancelPress)
         elem.addEventListener('pointercancel', cancelPress)
 
+        // Abre fullscreen e permite navegação com setas, gestos e teclado
         elem.addEventListener('click', 
             (event) =>{
                 if (hold) {
@@ -231,6 +239,8 @@ export class Iteractions{
                         )
                     }
                 }
+
+                // Navegação com setas do teclado
                 document.addEventListener('keydown', (e) => {
                     if(e.key == 'ArrowRight'){
                         arrowRigth()
@@ -240,6 +250,8 @@ export class Iteractions{
                         banner.click()
                     }
                 })
+
+                // Navegação com gesto de swipe
                 let x = 0
                 let y = 0
                 banner.addEventListener('pointerdown', (e) => {
@@ -263,20 +275,9 @@ export class Iteractions{
                 document.body.appendChild(banner)
             }
         )
-        // elem.addEventListener('mouseover',
-        //     (event) => {
-        //         const element = event.target.closest('figure')
-        //         element.querySelector('input').style.display = ''
-        //     }
-        // )
-        // elem.addEventListener('mouseout',
-        //     (event) =>{
-        //         const element = event.target.closest('figure')
-        //         element.querySelector('input').style.display = 'none'
-        //     }
-        // )
     }
 
+    // Fecha banner ao clicar no fundo
     static Banner(elem) {
         elem.addEventListener('click', 
             (event) => {
@@ -286,6 +287,7 @@ export class Iteractions{
         )
     }
 
+    // Gerencia botões de inserção e deleção
     static Button(elem) {
         if (elem.classList.contains('insert')){
             elem.addEventListener('click', (event) => {
@@ -313,6 +315,8 @@ export class Iteractions{
             })
         }
     }
+
+    // Gerencia seleção em massa de figuras
     static Main(elem) {
         elem.querySelector('#select-all').addEventListener('change', (event) => {
             const selectAll = new CustomEvent('selectAll', {

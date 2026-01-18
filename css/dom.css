@@ -1,7 +1,10 @@
+/* Variáveis de cores globais */
 :root{
     --background-color: white;
     --front-color:rgb(109, 109, 196);
 }
+
+/* Estilos do Formulário */
 [data-element-name= "Form"] input{
     display: none;
 }
@@ -23,8 +26,7 @@
     justify-content: space-around;
 }
 
-
-
+/* Estilos do seletor de cores */
 [data-element-name= "Colors"] div{
     position: absolute;
     display: none;
@@ -42,6 +44,7 @@
     border-radius: 10px;
 }
 
+/* Reset padrão */
 *{
     box-sizing: border-box;
     margin: 0;
@@ -52,6 +55,7 @@ body{
     width: 100vw;
 }
 
+/* Estilos das imagens da galeria */
 [data-element-name= "Figure"] {
     aspect-ratio: 1/1;
     position: relative;
@@ -69,7 +73,6 @@ body{
     transition: 300ms;
 }
 
-
 [data-element-name= "Figure"]>img:hover{
     cursor: pointer;
     box-shadow: 1px 1px 10px black;
@@ -77,6 +80,7 @@ body{
     transform: scale(1.02) rotate(0.01turn);
 }
 
+/* Checkbox para seleção de imagens */
 [data-element-name= "Figure"]>input[type = "checkbox"]{
     display:inline-block;
     position: absolute;
@@ -84,6 +88,7 @@ body{
     left: 7px;
 }
 
+/* Modal/Banner de visualização */
 [data-element-name = "Banner"]{
     touch-action: pan-y;
     position: fixed;
@@ -101,33 +106,23 @@ body{
 [data-element-name = "Image"] {
     touch-action: none;
 }
-/* @media (max-width: 768px) {
-    [data-element-name = "Image"]{
-        width: 100vw;
-    }
-} */
 
-
+/* Botão flutuante de inserção */
 [data-element-name = "Button"].insert{
-    /* position: fixed; */
     width: fit-content;
     height: fit-content;
     padding: 30px;
     background-color: var(--front-color);
     border: 0;
     border-radius: 70% 10% 10% 20%;
-
     font-size: x-large;
     font-weight: bolder;
     color: var(--background-color);
-
     position: fixed;
     bottom: 1vh;
     right: 1vw;
-
     transition: .5s;
 }
-
 
 [data-element-name = "Button"].insert:hover{
     cursor: pointer;
@@ -137,7 +132,7 @@ body{
     filter:brightness(1.5);
 }
 
-
+/* Grid responsivo da galeria */
 [data-element-name = "Galeria"] {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(250px,.5fr));
@@ -152,6 +147,7 @@ body{
     }
 }
 
+/* Header fixo no topo */
 header{
     position: sticky;
     top: 0;
@@ -165,6 +161,8 @@ header{
 header > input {
     align-self: flex-start;
 }
+
+/* Botão de deletar */
 [data-element-name = "Button"].delete{
     padding: 5px;
     background-color: red;
