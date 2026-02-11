@@ -1,6 +1,7 @@
 # Galeria Web
 
 Uma aplicação web moderna para gerenciar e visualizar galerias de imagens com suporte a armazenamento local utilizando IndexedDB.
+Deploy em : https://lukeinojosa.github.io/Galeria-Web/
 
 ## 📋 Características
 
